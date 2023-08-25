@@ -19,10 +19,12 @@ public class SistemaRilevamento extends SistemaRilevamentoBase implements SondaA
 	public void receiveAllert(Sonda sonda) {
 		System.out.println("Allarme ricevuto: ");
 		if (sonda.getFumo() > 5) {
-			System.out.println("Allarme!! livello fumo: " + sonda.getFumo() + ", la sonda " + sonda.getId() + " alle coordinate " + sonda.getCoordinataX() +" " + sonda.getCoordinataY());
+			System.out.println(" Allarme!! livello fumo: " + sonda.getFumo() + ", la sonda " + sonda.getId() + " alle coordinate " + sonda.getCoordinataX() +" " + sonda.getCoordinataY());
 			cAssistenza.allerta(sonda);
+				} else if(sonda.getFumo() == 0){
+					System.out.println(" Livelli normali");
 				} else {
-			System.out.println("Attenzione, livello fumo: " + sonda.getFumo() + ", possibile problema alla sonda " + sonda.getId() + " alle coordinate " + sonda.getCoordinataX() +" " + sonda.getCoordinataY());
+			System.out.println(" Attenzione, livello fumo: " + sonda.getFumo() + ", possibile problema alla sonda " + sonda.getId() + " alle coordinate " + sonda.getCoordinataX() +" " + sonda.getCoordinataY());
 		}
 	}
 

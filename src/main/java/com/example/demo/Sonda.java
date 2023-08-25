@@ -9,12 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Sonda {
-	private int id;
+	private Long id;
 	private int fumo;
 	private int  coordinataX;
 	private int  coordinataY;
 	
-	public Sonda(int id, int fumo, int coordinataX, int coordinataY) {
+	public Sonda(Long id, int fumo, int coordinataX, int coordinataY) {
 		this.id= id;
 		this.fumo = fumo;
 		this.coordinataX = coordinataX;
