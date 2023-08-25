@@ -2,25 +2,31 @@ package com.example.demo;
 
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.rilevamento.ComunicazioneFactory;
+import com.example.demo.rilevamento.Controllo;
 import com.example.demo.rilevamento.SistemaRilevamento;
 
 @Component
 public class obsRunner implements CommandLineRunner{
+	
+	private final ComunicazioneFactory cFactory;
+	
+	@Autowired
+	public obsRunner (ComunicazioneFactory cFactory) {
+		this.cFactory = cFactory;
+	}
+	
 	@Override
 	public void run(String... args) throws Exception {
-//		Sonda sonda = new Sonda(1, 3, 60, 50);
-		CentroAssistenza cn = new CentroAssistenza();
-		SistemaRilevamento sr = new SistemaRilevamento(cn);
-//		
-//		Sonda sonda2 = new Sonda(3, 9, 60, 50);
-//		sonda2.addSistemaControllo(sr);
-//		sonda2.sendAllert(sonda2);
-//
-//		sonda.addSistemaControllo(sr);
-//		sonda.sendAllert(sonda);
+		CentroAssistenza cn = new CentroAssistenza(1);
+		SistemaRilevamento sr = new SistemaRilevamento(1, cn);
+		Controllo cont = cFactory.creaControllo();
+		System.out.println(cn);
+		System.out.println(cont);
 		Random rnd = new Random();
 		for (int i = 0; i < 11; i++) {
 			Long randomN = rnd.nextLong(100000);

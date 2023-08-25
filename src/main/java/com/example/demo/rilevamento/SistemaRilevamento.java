@@ -7,12 +7,19 @@ import com.example.demo.CentroAssistenza;
 import com.example.demo.Sonda;
 import com.example.demo.SondaAllert;
 
-public class SistemaRilevamento extends SistemaRilevamentoBase implements SondaAllert{
-	private int id;
+import lombok.ToString;
+
+@ToString 
+public class SistemaRilevamento extends Controllo implements SondaAllert{
 	private CentroAssistenza cAssistenza;
 	
-	public SistemaRilevamento(CentroAssistenza cAssistenza) {
+	public SistemaRilevamento(int controlloId, CentroAssistenza cAssistenza) {
+		super (controlloId);
 		this.cAssistenza = cAssistenza;
+	}
+	
+	public SistemaRilevamento(int controlloId) {
+		super (controlloId);
 	}
 	
 	@Override
@@ -27,5 +34,4 @@ public class SistemaRilevamento extends SistemaRilevamentoBase implements SondaA
 			System.out.println(" Attenzione, livello fumo: " + sonda.getFumo() + ", possibile problema alla sonda " + sonda.getId() + " alle coordinate " + sonda.getCoordinataX() +" " + sonda.getCoordinataY());
 		}
 	}
-
 }
